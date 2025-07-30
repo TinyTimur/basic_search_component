@@ -1,0 +1,24 @@
+.controlsButton {
+  display: flex;
+  width: 8.125rem;
+  height: 3.75rem;
+  border-radius: 1.25rem;
+  background-color: #ff5500;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+@media (any-hover: hover) {
+  .controlsButton:hover {
+    transition-duration: var(--transition-duration);
+    scale: 1.1;
+  }
+}
+@media (any-hover: none) {
+  .controlsButton:active {
+    transition-duration: var(--transition-duration);
+    scale: 1.1;
+  }
+}
+
+/*# sourceMappingURL=ControlsButton.module.css.map */

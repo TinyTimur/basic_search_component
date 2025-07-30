@@ -1,0 +1,17 @@
+@use '../../Styles/helpers' as *;
+
+.controlsButton {
+  display: flex;
+  width: rem(130);
+  height: rem(60);
+  border-radius: rem(20);
+  background-color: #ff5500;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  @include hover {
+    transition-duration: var(--transition-duration);
+    scale: 1.1;
+
+  }
+}

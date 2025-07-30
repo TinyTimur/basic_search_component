@@ -1,0 +1,10 @@
+.suppliers {
+  padding: 0.625rem;
+  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #7e7e81;
+  justify-items: center;
+}
+
+/*# sourceMappingURL=Suppliers.module.css.map */

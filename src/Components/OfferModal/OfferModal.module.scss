@@ -1,0 +1,29 @@
+@use '../../Styles/helpers' as *;
+
+
+.offerModal {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(5);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(10);
+    align-items: center;
+  }
+
+  &__overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+  }
+
+}

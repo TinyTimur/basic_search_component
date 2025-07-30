@@ -1,0 +1,9 @@
+@use '../../Styles/helpers' as *;
+
+.offer {
+  border-radius: rem(20);
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}

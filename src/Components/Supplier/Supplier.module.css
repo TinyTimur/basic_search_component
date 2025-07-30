@@ -1,0 +1,9 @@
+.supplier {
+  border-radius: 1.25rem;
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+
+/*# sourceMappingURL=Supplier.module.css.map */

@@ -1,0 +1,13 @@
+@use '../../Styles/helpers' as *;
+
+.header {
+  height: rem(110);
+  background-color: #666666;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  &__input {
+    display: flex;
+    flex-direction: column;
+  }
+}

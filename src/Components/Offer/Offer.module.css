@@ -1,0 +1,9 @@
+.offer {
+  border-radius: 1.25rem;
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+/*# sourceMappingURL=Offer.module.css.map */
