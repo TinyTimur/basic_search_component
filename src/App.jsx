@@ -7,6 +7,7 @@ import { OfferModal } from './Components/OfferModal/OfferModal.jsx';
 function App() {
     const [openTab, setOpenTab] = useState(null);
     const [searchInput, setSearchInput] = useState('');
+    const [isOpen, setOpen] = useState(false);
 
     let content;
     if (openTab === 'offers') {
@@ -17,9 +18,23 @@ function App() {
         content = <p>Please select a tab</p>;
     }
 
+    let modal;
+
+    if (isOpen) {
+        modal = <OfferModal setOpen={setOpen} />;
+    } else {
+        modal = null;
+    }
+
     return (
         <>
-            <Header setOpenTab={setOpenTab} setSearchInput={setSearchInput} />
+            <Header
+                setOpenTab={setOpenTab}
+                setSearchInput={setSearchInput}
+                setModalOpen={setOpen}
+                isModalOpen={isOpen}
+            />
+            {modal}
             {content}
         </>
     );

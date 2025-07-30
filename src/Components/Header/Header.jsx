@@ -1,12 +1,20 @@
 import { ControlsButton } from '../ControlsButton/ControlsButton.jsx';
 import styles from './Header.module.scss';
 
-export function Header({ setOpenTab, setSearchInput }) {
+export function Header({
+    setOpenTab,
+    setSearchInput,
+    setModalOpen,
+    isModalOpen,
+}) {
     function handleOffersClick() {
         setOpenTab('offers');
     }
     function handleSuppliersClick() {
         setOpenTab('suppliers');
+    }
+    function handleAddOfferClick() {
+        setModalOpen(!isModalOpen);
     }
 
     return (
@@ -35,7 +43,10 @@ export function Header({ setOpenTab, setSearchInput }) {
                     handleControlsClick={handleSuppliersClick}
                 />
 
-                <ControlsButton content={'add offer'} />
+                <ControlsButton
+                    content={'add offer'}
+                    handleControlsClick={handleAddOfferClick}
+                />
             </header>
         </>
     );

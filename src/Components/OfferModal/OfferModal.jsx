@@ -2,12 +2,11 @@ import { ControlsButton } from '../ControlsButton/ControlsButton.jsx';
 import styles from './OfferModal.module.scss';
 import { useState } from 'react';
 
-export function OfferModal() {
+export function OfferModal({ setOpen }) {
     const [input, setInput] = useState({
         mark: '',
-        name: '',
+        model: '',
         supplier_id: '',
-        reg_date: '',
     });
 
     function handleSubmit(event) {
@@ -20,7 +19,6 @@ export function OfferModal() {
                 mark: input.mark,
                 model: input.model,
                 supplier_id: input.supplier_id,
-                reg_date: input.reg_date,
             }),
         })
             .then((res) => res.json())
@@ -32,9 +30,16 @@ export function OfferModal() {
             });
     }
 
+    function handleCloseModal() {
+        setOpen(false);
+    }
+
     return (
-        <div className={styles.offerModal__overlay}>
-            <div className={styles.offerModal}>
+        <div className={styles.offerModal__overlay} onClick={handleCloseModal}>
+            <div
+                className={styles.offerModal}
+                onClick={(e) => e.stopPropagation()}
+            >
                 <form action="" className={styles.offerModal__form}>
                     <div className={styles.offerModal__item}>
                         <label htmlFor="Mark">Mark</label>
@@ -60,22 +65,16 @@ export function OfferModal() {
                         <label htmlFor="Supplier Id">Supplier Id</label>
                         <input
                             onChange={(e) =>
-                                setInput({ ...input, mark: e.target.value })
+                                setInput({
+                                    ...input,
+                                    supplier_id: e.target.value,
+                                })
                             }
                             type="text"
                             id={'Supplier Id'}
                         />
                     </div>
-                    <div className={styles.offerModal__item}>
-                        <label htmlFor="">Date</label>
-                        <input
-                            onChange={(e) => {
-                                setInput({ ...input, mark: e.target.value });
-                            }}
-                            type="text"
-                            id={'Date'}
-                        />
-                    </div>
+
                     <ControlsButton
                         content={'submit'}
                         handleControlsClick={handleSubmit}

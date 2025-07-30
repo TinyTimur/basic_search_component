@@ -43,7 +43,7 @@ app.get('/offers/:supplier_id', (req, res) => {
 app.get('/offers', (req, res) => {
     connection.query('SELECT * FROM offers', (err, result) => {
         if (err) {
-            res.status(500).send('Error getting');
+            res.status(500).send(err);
             return;
         }
         res.json(result);
@@ -53,7 +53,7 @@ app.get('/offers', (req, res) => {
 app.get('/suppliers', (req, res) => {
     connection.query('SELECT * FROM suppliers', (err, result) => {
         if (err) {
-            res.status(500).send('Error getting Suppliers');
+            res.status(500).send(err);
             return;
         }
         res.json(result);
@@ -61,13 +61,13 @@ app.get('/suppliers', (req, res) => {
 });
 
 app.post('/offers', (req, res) => {
-    const { mark, model, supplier_id, reg_date } = req.body;
+    const { mark, model, supplier_id } = req.body;
     connection.query(
-        'INSERT INTO offers (`mark`, `model`, `supplier_id`, `reg_date`) VALUES (?,?,?,?)',
-        [mark, model, supplier_id, reg_date],
+        'INSERT INTO offers (`mark`, `model`, `supplier_id`) VALUES (?,?,?)',
+        [mark, model, supplier_id],
         (err, result) => {
             if (err) {
-                res.status(500).send('Error posting offer');
+                res.status(500).send(err);
             }
             res.status(200).json(result);
         }
