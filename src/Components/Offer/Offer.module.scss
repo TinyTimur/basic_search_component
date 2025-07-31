@@ -1,9 +1,20 @@
 @use '../../Styles/helpers' as *;
 
+.controlsInOffer {
+  position: absolute;
+  top: rem(-15);     // подними кнопку над offer
+  right: rem(-15);   // задвинь за правый край
+  z-index: 2;
+}
+
 .offer {
+  position: relative;
   border-radius: rem(20);
   background-color: cornflowerblue;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+
+  overflow: visible;
+
 }

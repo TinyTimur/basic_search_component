@@ -68,10 +68,24 @@ app.post('/offers', (req, res) => {
         (err, result) => {
             if (err) {
                 res.status(500).send(err);
+                return;
             }
             res.status(200).json(result);
         }
     );
+});
+
+app.delete('/offers/:id', (req, res) => {
+    const { id } = req.body;
+    const sql = 'DELETE FROM offers WHERE id = ?';
+
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.status(200).json(result);
+    });
 });
 
 const PORT = 3000;
