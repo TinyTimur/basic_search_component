@@ -1,9 +1,34 @@
 @use '../../Styles/helpers' as *;
 
+.controlsInOffer {
+  position: absolute;
+  top: rem(-25);
+  right: rem(-15);
+  z-index: 1;
+  scale: 0.8;
+}
+
 .supplier {
+  align-self: center;
+  justify-self: center;
+  padding: rem(20);
+  position: relative;
   border-radius: rem(20);
   background-color: cornflowerblue;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
+  column-gap: rem(10);
+  width: rem(1300);
+  height: auto;
+
+  @include laptop {
+    width: rem(980);
+  }
+
+  @include tablet {
+    width: rem(650);
+  }
+
+
 }

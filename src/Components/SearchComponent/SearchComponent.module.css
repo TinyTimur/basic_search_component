@@ -1,0 +1,11 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.3125rem;
+  padding-block: 0.625rem;
+  font-size: 1.25rem;
+}
+
+/*# sourceMappingURL=SearchComponent.module.css.map */

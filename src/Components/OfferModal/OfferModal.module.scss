@@ -2,10 +2,13 @@
 
 
 .offerModal {
-  position: absolute;
+  position: fixed;
+  align-self: center;
+  justify-self: center;
   z-index: 2;
-  top: 40%;
-  left: 45%;
+  top: 30%;
+  transition-duration: var(--transition-duration);
+
 
   &__item {
     display: flex;
@@ -25,7 +28,7 @@
 
   &__overlay {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     padding-top: 100px;
     left: 0;
     top: 0;

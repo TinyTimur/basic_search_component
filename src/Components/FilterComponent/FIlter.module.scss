@@ -1,0 +1,12 @@
+@use '../../Styles/helpers' as *;
+
+.filterBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: rem(5);
+  padding-block: rem(10);
+  font-size: rem(20);
+
+}

@@ -1,13 +1,26 @@
 import { ControlsButton } from '../ControlsButton/ControlsButton.jsx';
 import styles from './OfferModal.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export function OfferModal({ setOpen }) {
+export function OfferModal({ setOpen, setOffers, isOpen }) {
     const [input, setInput] = useState({
         mark: '',
         model: '',
         supplier_id: '',
     });
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('/suppliers')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                setData(data);
+            })
+            .catch((err) => console.error('Erorr', err));
+    }, [isOpen]);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -22,8 +35,10 @@ export function OfferModal({ setOpen }) {
             }),
         })
             .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
+            .then((newOffer) => {
+                console.log('New Offer:', newOffer);
+                setOffers((prev) => [...prev, newOffer]);
+                setOpen(false);
             })
             .catch((err) => {
                 console.log(err);
@@ -49,6 +64,7 @@ export function OfferModal({ setOpen }) {
                             }
                             type="text"
                             id={'Mark'}
+                            required={true}
                         />
                     </div>
                     <div className={styles.offerModal__item}>
@@ -59,20 +75,32 @@ export function OfferModal({ setOpen }) {
                             }
                             type="text"
                             id={'Model'}
+                            required={true}
                         />
                     </div>
                     <div className={styles.offerModal__item}>
-                        <label htmlFor="Supplier Id">Supplier Id</label>
-                        <input
+                        <label htmlFor="Supplier_id">Supplier id</label>
+                        <select
                             onChange={(e) =>
                                 setInput({
                                     ...input,
                                     supplier_id: e.target.value,
                                 })
                             }
-                            type="text"
-                            id={'Supplier Id'}
-                        />
+                            name=""
+                            id=""
+                        >
+                            {data.map((supplier) => {
+                                return (
+                                    <option
+                                        key={supplier.id}
+                                        value={supplier.id}
+                                    >
+                                        {supplier.name}
+                                    </option>
+                                );
+                            })}
+                        </select>
                     </div>
 
                     <ControlsButton

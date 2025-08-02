@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Offers.module.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA","file":"Offers.module.css"}
+{"version":3,"sourceRoot":"","sources":["Offers.module.scss","../../Styles/helpers/_media.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA;;ACmBA;EDxBJ;IAQQ","file":"Offers.module.css"}

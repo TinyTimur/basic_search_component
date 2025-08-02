@@ -1,11 +1,13 @@
 .controlsInOffer {
   position: absolute;
-  top: -0.9375rem;
+  top: -1.5625rem;
   right: -0.9375rem;
-  z-index: 2;
+  z-index: 1;
+  scale: 0.8;
 }
 
 .offer {
+  padding: 0.9375rem;
   position: relative;
   border-radius: 1.25rem;
   background-color: cornflowerblue;
@@ -13,6 +15,8 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   overflow: visible;
+  min-width: 100%;
+  word-break: normal;
 }
 
 /*# sourceMappingURL=Offer.module.css.map */

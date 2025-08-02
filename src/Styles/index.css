@@ -305,21 +305,6 @@ a[class] {
   transition-duration: 0s !important;
 }
 
-a[aria-label],
-button[aria-label] {
-  position: relative;
-}
-a::before,
-button::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 2.75rem;
-  height: 2.75rem;
-  content: "";
-}
-
 .container {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   margin-inline: auto;
@@ -358,7 +343,7 @@ button::before {
   --color-dark-15: #262626;
   --color-dark-20: #333333;
   --color-dark-40: #666666;
-  --color-gray-50: #0d0d0e;
+  --color-gray-50: #1a1a1c;
   --color-gray-60: #98989a;
   --color-accent: #ffd11a;
   --color-red: #ff5500;

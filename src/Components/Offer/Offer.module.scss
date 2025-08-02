@@ -2,19 +2,21 @@
 
 .controlsInOffer {
   position: absolute;
-  top: rem(-15);     // подними кнопку над offer
-  right: rem(-15);   // задвинь за правый край
-  z-index: 2;
+  top: rem(-25);
+  right: rem(-15);
+  z-index: 1;
+  scale: 0.8;
 }
 
 .offer {
+  padding: rem(15);
   position: relative;
   border-radius: rem(20);
   background-color: cornflowerblue;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-
   overflow: visible;
-
+  min-width: 100%;
+  word-break: normal;
 }

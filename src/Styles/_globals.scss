@@ -115,16 +115,3 @@ a {
     transition-duration: 0s !important;
 }
 
-a,
-button {
-    &[aria-label] {
-        position: relative;
-    }
-
-    &::before {
-        @include abs-center;
-        @include square(rem(44));
-
-        content: '';
-    }
-}

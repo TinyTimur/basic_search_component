@@ -51,7 +51,17 @@ app.get('/offers', (req, res) => {
 });
 
 app.get('/suppliers', (req, res) => {
-    connection.query('SELECT * FROM suppliers', (err, result) => {
+    const order = req.query.order === 'asc' ? 'ASC' : 'DESC';
+
+    const sql = `
+        SELECT s.*, COUNT(o.id) AS offerCount
+        FROM suppliers s
+        LEFT JOIN offers o ON s.id = o.supplier_id
+        GROUP BY s.id
+        ORDER BY offerCount ${order}
+    `;
+
+    connection.query(sql, (err, result) => {
         if (err) {
             res.status(500).send(err);
             return;
@@ -62,18 +72,35 @@ app.get('/suppliers', (req, res) => {
 
 app.post('/offers', (req, res) => {
     const { mark, model, supplier_id } = req.body;
+
     connection.query(
-        'INSERT INTO offers (`mark`, `model`, `supplier_id`) VALUES (?,?,?)',
+        'INSERT INTO offers (`mark`, `model`, `supplier_id`) VALUES (?, ?, ?)',
         [mark, model, supplier_id],
         (err, result) => {
             if (err) {
                 res.status(500).send(err);
                 return;
             }
-            res.status(200).json(result);
+
+            const insertedId = result.insertId;
+
+            connection.query(
+                'SELECT * FROM offers WHERE id = ?',
+                [insertedId],
+                (err2, rows) => {
+                    if (err2) {
+                        res.status(500).send(err2);
+                        return;
+                    }
+
+                    res.status(200).json(rows[0]); // вернём сам оффер
+                }
+            );
         }
     );
 });
+
+// Delete Offer Endpoint
 
 app.delete('/offers/:id', (req, res) => {
     const { id } = req.body;
@@ -82,6 +109,19 @@ app.delete('/offers/:id', (req, res) => {
     connection.query(sql, [id], (err, result) => {
         if (err) {
             res.status(500).send(err);
+            return;
+        }
+        res.status(200).json(result);
+    });
+});
+
+app.delete('/suppliers/:id', (req, res) => {
+    const { id } = req.body;
+    const sql = 'DELETE FROM suppliers WHERE id = ?';
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            res.status(500).send(err);
+            console.log('Error on server', err);
             return;
         }
         res.status(200).json(result);

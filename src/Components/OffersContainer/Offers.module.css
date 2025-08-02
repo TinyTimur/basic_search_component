@@ -1,9 +1,14 @@
 .offers {
-  padding: 0.625rem;
+  padding: 1.875rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: #7e7e81;
-  gap: 1.25rem;
+  gap: 1.875rem;
+}
+@media (width <= 63.99875rem) {
+  .offers {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /*# sourceMappingURL=Offers.module.css.map */

@@ -1,10 +1,8 @@
 import styles from './Offers.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Offer } from '../Offer/Offer.jsx';
 
-export function Offers({ searchInput }) {
-    const [offers, setOffers] = useState([]);
-
+export function Offers({ searchInput, offers, setOffers }) {
     function handleDeleteClick(id) {
         fetch(`/offers/${id}`, {
             method: 'DELETE',
