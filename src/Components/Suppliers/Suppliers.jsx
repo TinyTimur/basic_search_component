@@ -56,18 +56,20 @@ export function Suppliers({ suppliers, setSuppliers, sortOrder }) {
     return (
         <>
             <div className={styles.suppliers}>
-                {suppliers.map((supplier) => {
-                    return (
-                        <Supplier
-                            offersAmount={supplier.offerCount}
-                            key={supplier.id}
-                            {...supplier}
-                            handleDeleteClick={() =>
-                                handleDeleteClick(supplier.id)
-                            }
-                        />
-                    );
-                })}
+                {suppliers.length > 0
+                    ? suppliers.map((supplier) => {
+                          return (
+                              <Supplier
+                                  offersAmount={supplier.offerCount}
+                                  key={supplier.id}
+                                  {...supplier}
+                                  handleDeleteClick={() =>
+                                      handleDeleteClick(supplier.id)
+                                  }
+                              />
+                          );
+                      })
+                    : 'No suppliers found'}
             </div>
         </>
     );

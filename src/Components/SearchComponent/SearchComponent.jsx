@@ -12,12 +12,8 @@ export function SearchComponent({ setSearchInput, searchInput, searchFor }) {
                     placeholder={'1'}
                     onChange={(e) => {
                         console.log(searchInput);
-                        setSearchInput({
-                            ...searchInput,
-                            offers: e.target.value,
-                        });
+                        setSearchInput(e.target.value);
                     }}
-                    maxLength={1}
                 ></input>
             </div>
         </>

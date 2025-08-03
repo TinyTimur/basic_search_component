@@ -8,10 +8,7 @@ import { Filter } from './Components/FilterComponent/Filter.jsx';
 
 function App() {
     const [openTab, setOpenTab] = useState(null);
-    const [searchInput, setSearchInput] = useState({
-        offers: '',
-        suppliers: '',
-    });
+    const [searchInput, setSearchInput] = useState('');
     const [isOpen, setOpen] = useState(false);
     const [offers, setOffers] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
@@ -32,7 +29,7 @@ function App() {
                 <Offers
                     offers={offers}
                     setOffers={setOffers}
-                    searchInput={searchInput.offers}
+                    searchInput={searchInput}
                 />{' '}
             </>
         );
@@ -71,7 +68,6 @@ function App() {
         <>
             <Header
                 setOpenTab={setOpenTab}
-                setSearchInput={setSearchInput}
                 setModalOpen={setOpen}
                 isModalOpen={isOpen}
             />

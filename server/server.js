@@ -128,6 +128,19 @@ app.delete('/suppliers/:id', (req, res) => {
     });
 });
 
+app.get('/suppliers/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'SELECT * FROM suppliers WHERE id = ?';
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            res.status(500).send(err);
+            console.error('Error on server', err);
+            return;
+        }
+        res.status(200).json(result);
+    });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
